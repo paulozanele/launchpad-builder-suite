@@ -15,9 +15,7 @@ import { ptBR } from 'date-fns/locale';
 const Agenda = () => {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-
-  // Mock data para agendamentos
-  const agendamentos = [
+  const [agendamentos, setAgendamentos] = useState([
     {
       id: 1,
       cliente: "Maria Silva",
@@ -48,12 +46,29 @@ const Agenda = () => {
       endereco: "Rua Augusta, 789",
       telefone: "(11) 77777-7777"
     }
-  ];
+  ]);
+
 
   const handleNovoAgendamento = (e: React.FormEvent) => {
     e.preventDefault();
+    const form = e.currentTarget as HTMLFormElement;
+    const formData = new FormData(form);
+    
+    const novoAgendamento = {
+      id: agendamentos.length + 1,
+      cliente: formData.get('cliente') as string,
+      servico: formData.get('servico') as string,
+      horario: formData.get('horario') as string,
+      data: formData.get('data') as string,
+      status: "confirmado",
+      endereco: "Endereço a definir",
+      telefone: "(11) 00000-0000"
+    };
+    
+    setAgendamentos([...agendamentos, novoAgendamento]);
     setIsDialogOpen(false);
-    // Aqui adicionaria o novo agendamento ao estado
+    form.reset();
+    console.log('Novo agendamento criado:', novoAgendamento);
   };
 
   const getStatusColor = (status: string) => {
@@ -95,30 +110,26 @@ const Agenda = () => {
               <form onSubmit={handleNovoAgendamento} className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="cliente">Cliente</Label>
-                  <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Selecione um cliente" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="maria">Maria Silva</SelectItem>
-                      <SelectItem value="joao">João Santos</SelectItem>
-                      <SelectItem value="ana">Ana Costa</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  <Input 
+                    id="cliente" 
+                    name="cliente" 
+                    placeholder="Nome do cliente" 
+                    required 
+                  />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="data">Data</Label>
-                    <Input id="data" type="date" required />
+                    <Input id="data" name="data" type="date" required />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="horario">Horário</Label>
-                    <Input id="horario" type="time" required />
+                    <Input id="horario" name="horario" type="time" required />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="servico">Serviço</Label>
-                  <Input id="servico" placeholder="Descrição do serviço" required />
+                  <Input id="servico" name="servico" placeholder="Descrição do serviço" required />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="observacoes">Observações</Label>
