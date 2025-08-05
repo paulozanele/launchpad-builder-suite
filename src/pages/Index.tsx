@@ -12,6 +12,7 @@ const Index = () => {
 
   const handleAuth = (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('Form submitted'); // Debug log
     // Simular login bem-sucedido
     localStorage.setItem('servicepro_user', JSON.stringify({
       id: '1',
@@ -19,6 +20,7 @@ const Index = () => {
       email: 'joao@exemplo.com',
       tipo_servico: 'Eletricista'
     }));
+    console.log('Navigating to dashboard'); // Debug log
     navigate('/dashboard');
   };
 
