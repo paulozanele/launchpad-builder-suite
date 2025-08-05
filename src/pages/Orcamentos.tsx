@@ -243,16 +243,32 @@ const Orcamentos = () => {
                     <p className="text-gray-600">{orcamento.cliente}</p>
                   </div>
                   <div className="flex space-x-2">
-                    <Button variant="outline" size="sm">
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      onClick={() => console.log('Visualizar orçamento:', orcamento.numero)}
+                    >
                       <Eye className="h-4 w-4" />
                     </Button>
-                    <Button variant="outline" size="sm">
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      onClick={() => console.log('Editar orçamento:', orcamento.numero)}
+                    >
                       <Edit className="h-4 w-4" />
                     </Button>
-                    <Button variant="outline" size="sm">
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      onClick={() => console.log('Enviar orçamento:', orcamento.numero)}
+                    >
                       <Send className="h-4 w-4" />
                     </Button>
-                    <Button variant="outline" size="sm">
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      onClick={() => console.log('Excluir orçamento:', orcamento.numero)}
+                    >
                       <Trash2 className="h-4 w-4" />
                     </Button>
                   </div>
@@ -297,7 +313,12 @@ const Orcamentos = () => {
                       Agendar Serviço
                     </Button>
                   )}
-                  <Button variant="outline" size="sm">
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    onClick={() => console.log('Gerar PDF do orçamento:', orcamento.numero)}
+                  >
+                    <FileText className="h-4 w-4 mr-1" />
                     Gerar PDF
                   </Button>
                 </div>

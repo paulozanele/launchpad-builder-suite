@@ -439,25 +439,45 @@ const PagamentosList = ({ pagamentos }: { pagamentos: any[] }) => {
             <div className="mt-4 flex justify-end space-x-2">
               {pagamento.status === 'pendente' && (
                 <>
-                  <Button size="sm" className="bg-green-600 hover:bg-green-700">
+                  <Button 
+                    size="sm" 
+                    className="bg-green-600 hover:bg-green-700"
+                    onClick={() => console.log('Marcar como pago:', pagamento.cliente)}
+                  >
                     Marcar como Pago
                   </Button>
-                  <Button variant="outline" size="sm">
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    onClick={() => console.log('Enviar cobrança para:', pagamento.cliente)}
+                  >
                     Enviar Cobrança
                   </Button>
                 </>
               )}
               {pagamento.status === 'atrasado' && (
                 <>
-                  <Button size="sm" className="bg-green-600 hover:bg-green-700">
+                  <Button 
+                    size="sm" 
+                    className="bg-green-600 hover:bg-green-700"
+                    onClick={() => console.log('Marcar como pago:', pagamento.cliente)}
+                  >
                     Marcar como Pago
                   </Button>
-                  <Button variant="outline" size="sm">
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    onClick={() => console.log('Reagendar para:', pagamento.cliente)}
+                  >
                     Reagendar
                   </Button>
                 </>
               )}
-              <Button variant="outline" size="sm">
+              <Button 
+                variant="outline" 
+                size="sm"
+                onClick={() => console.log('Gerar recibo para:', pagamento.cliente)}
+              >
                 Gerar Recibo
               </Button>
             </div>

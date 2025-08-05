@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
-import { Plus, Search, Phone, Mail, MapPin, Calendar, Edit, Trash2 } from "lucide-react";
+import { Plus, Search, Phone, Mail, MapPin, Calendar, Edit, Trash2, Clock } from "lucide-react";
 import { Layout } from "@/components/Layout";
 
 const Clientes = () => {
@@ -192,10 +192,18 @@ const Clientes = () => {
                     </div>
                   </div>
                   <div className="flex space-x-2">
-                    <Button variant="outline" size="sm">
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      onClick={() => console.log('Editar cliente:', cliente.id)}
+                    >
                       <Edit className="h-4 w-4" />
                     </Button>
-                    <Button variant="outline" size="sm">
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      onClick={() => console.log('Excluir cliente:', cliente.id)}
+                    >
                       <Trash2 className="h-4 w-4" />
                     </Button>
                   </div>
@@ -231,10 +239,20 @@ const Clientes = () => {
                     {cliente.totalServicos} serviços realizados
                   </div>
                   <div className="flex space-x-2">
-                    <Button variant="outline" size="sm">
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      onClick={() => console.log('Ver histórico do cliente:', cliente.id)}
+                    >
+                      <Clock className="h-4 w-4 mr-1" />
                       Ver Histórico
                     </Button>
-                    <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
+                    <Button 
+                      size="sm" 
+                      className="bg-blue-600 hover:bg-blue-700"
+                      onClick={() => console.log('Novo agendamento para cliente:', cliente.id)}
+                    >
+                      <Plus className="h-4 w-4 mr-1" />
                       Novo Agendamento
                     </Button>
                   </div>

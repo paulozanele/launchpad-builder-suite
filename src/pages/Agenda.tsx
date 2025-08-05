@@ -8,8 +8,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { Plus, Clock, MapPin, User } from "lucide-react";
+import { Plus, Clock, MapPin, User, Edit } from "lucide-react";
 import { Layout } from "@/components/Layout";
+import { ptBR } from 'date-fns/locale';
 
 const Agenda = () => {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
@@ -148,6 +149,7 @@ const Agenda = () => {
                 selected={selectedDate}
                 onSelect={setSelectedDate}
                 className="rounded-md border"
+                locale={ptBR}
               />
             </CardContent>
           </Card>
@@ -169,7 +171,12 @@ const Agenda = () => {
                           {agendamento.status}
                         </Badge>
                       </div>
-                      <Button variant="outline" size="sm">
+                      <Button 
+                        variant="outline" 
+                        size="sm"
+                        onClick={() => console.log('Editar agendamento:', agendamento.id)}
+                      >
+                        <Edit className="h-4 w-4 mr-1" />
                         Editar
                       </Button>
                     </div>

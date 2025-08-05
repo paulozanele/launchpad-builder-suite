@@ -43,7 +43,10 @@ const Dashboard = () => {
             <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
             <p className="text-gray-600">Bem-vindo, {user.nome}!</p>
           </div>
-          <Button className="bg-blue-600 hover:bg-blue-700">
+          <Button 
+            className="bg-blue-600 hover:bg-blue-700"
+            onClick={() => navigate('/agenda')}
+          >
             <Plus className="h-4 w-4 mr-2" />
             Novo Agendamento
           </Button>
